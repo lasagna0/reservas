@@ -11,7 +11,7 @@ c = conn.cursor()
 c.execute('''CREATE TABLE IF NOT EXISTS salas
                 ([id] INTEGER PRIMARY KEY,[name] text)''')
 c.execute('''CREATE TABLE IF NOT EXISTS reservas
-                ([id] INTEGER PRIMARY KEY,[sala_id] INTEGER, [fecha] date, [hora_inicio] time, [hora_fin] time, [nombre_reservante] text, [email_reservante] text, [invitados] text, [motivo] text, [observaciones] text)''')
+                ([id] INTEGER PRIMARY KEY,[sala_id] INTEGER, [fecha] text, [hora_inicio] time, [hora_fin] time, [nombre_reservante] text, [email_reservante] text, [invitados] text, [motivo] text, [observaciones] text)''')
 conn.commit()
 
 st.title('Sistema de reserva de salas')
