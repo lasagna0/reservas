@@ -82,6 +82,7 @@ elif sala in ['Manglar 1', 'Manglar 2']:
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
+        selected_date=str(selected_date)
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (1, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
@@ -114,6 +115,7 @@ elif sala == 'Manglares':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
+        selected_date=str(selected_date)
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (2, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
@@ -144,6 +146,7 @@ elif sala == 'Rio':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
+        selected_date=str(selected_date)
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (4, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
@@ -172,6 +175,7 @@ elif sala == 'Mar':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
+        selected_date=str(selected_date)
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (5, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
