@@ -83,6 +83,8 @@ elif sala in ['Manglar 1', 'Manglar 2']:
 
     if st.button('Reservar'):
         selected_date_str = selected_date.strftime("%Y-%m-%d")
+        print(selected_date)
+        print(selected_date_str)
 
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (1, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
@@ -118,6 +120,8 @@ elif sala == 'Manglares':
 
     if st.button('Reservar'):
         selected_date_str = selected_date.strftime("%Y-%m-%d")
+        print(selected_date)
+        print(selected_date_str)
 
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (2, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
@@ -150,6 +154,8 @@ elif sala == 'Rio':
 
     if st.button('Reservar'):
         selected_date_str = selected_date.strftime("%Y-%m-%d")
+        print(selected_date)
+        print(selected_date_str)
 
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (4, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
@@ -180,6 +186,8 @@ elif sala == 'Mar':
 
     if st.button('Reservar'):
         selected_date_str = selected_date.strftime("%Y-%m-%d")
+        print(selected_date)
+        print(selected_date_str)
 
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
                   (5, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
