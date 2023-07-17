@@ -11,7 +11,7 @@ c = conn.cursor()
 c.execute('''CREATE TABLE IF NOT EXISTS salas
                 ([id] INTEGER PRIMARY KEY,[name] text)''')
 c.execute('''CREATE TABLE IF NOT EXISTS reservas
-                ([id] INTEGER PRIMARY KEY,[sala_id] INTEGER, [fecha] text, [hora_inicio] time, [hora_fin] time, [nombre_reservante] text, [email_reservante] text, [invitados] text, [motivo] text, [observaciones] text)''')
+                ([id] INTEGER PRIMARY KEY,[sala_id] INTEGER, [fecha] string, [hora_inicio] time, [hora_fin] time, [nombre_reservante] text, [email_reservante] text, [invitados] text, [motivo] text, [observaciones] text)''')
 conn.commit()
 
 st.title('Sistema de reserva de salas')
@@ -82,14 +82,16 @@ elif sala in ['Manglar 1', 'Manglar 2']:
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
-        selected_date=str(selected_date)
+        selected_date_str = selected_date.strftime("%Y-%m-%d")
+
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
-                  (1, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
+                  (1, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
         st.write('Tu reserva ha sido exitosa')
-        st.write('Tu reserva es para el día:', selected_date)
+        st.write('Tu reserva es para el día:', selected_date_str)
         st.write('Desde las:', selected_start_time)
         st.write('Hasta las:', selected_end_time)
+
 elif sala == 'Manglares':
     st.write('Estás a punto de reservar Manglares (Manglar 1 y Manglar 2)')
     selected_date = st.date_input('Selecciona una fecha', today, key='date')
@@ -115,14 +117,15 @@ elif sala == 'Manglares':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
-        selected_date=str(selected_date)
+        selected_date_str = selected_date.strftime("%Y-%m-%d")
+
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
-                  (2, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
+                  (2, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
-                  (3, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
+                  (3, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
         st.write('Tu reserva ha sido exitosa')
-        st.write('Tu reserva es para el día:', selected_date)
+        st.write('Tu reserva es para el día:', selected_date_str)
         st.write('Desde las:', selected_start_time)
         st.write('Hasta las:', selected_end_time)
 
@@ -146,12 +149,13 @@ elif sala == 'Rio':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
-        selected_date=str(selected_date)
+        selected_date_str = selected_date.strftime("%Y-%m-%d")
+
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
-                  (4, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
+                  (4, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
         st.write('Tu reserva ha sido exitosa')
-        st.write('Tu reserva es para el día:', selected_date)
+        st.write('Tu reserva es para el día:', selected_date_str)
         st.write('Desde las:', selected_start_time)
         st.write('Hasta las:', selected_end_time)
 
@@ -175,13 +179,14 @@ elif sala == 'Mar':
     observations = st.text_input('Ingresa observaciones', key='observations')
 
     if st.button('Reservar'):
-        selected_date=str(selected_date)
+        selected_date_str = selected_date.strftime("%Y-%m-%d")
+
         c.execute("INSERT INTO reservas (sala_id, fecha, hora_inicio, hora_fin, nombre_reservante, email_reservante, invitados, motivo, observaciones) VALUES (?,?,?,?,?,?,?,?,?)",
-                  (5, selected_date, selected_start_time, selected_end_time, name, email, guests, reason, observations))
+                  (5, selected_date_str, selected_start_time, selected_end_time, name, email, guests, reason, observations))
         conn.commit()
         st.write('Tu reserva ha sido exitosa')
-        st.write('Tu reserva es para el día:', selected_date)
+        st.write('Tu reserva es para el día:', selected_date_str)
         st.write('Desde las:', selected_start_time)
         st.write('Hasta las:', selected_end_time)
 
-        
+conn.close()
